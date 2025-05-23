@@ -3,7 +3,7 @@ import globals from 'globals';
 
 export default [
   {
-    files: ['*/.js'],
+    files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: {

@@ -1,8 +1,19 @@
 export function logMiddleware(req, res, next) {
-    const date = (new Date())
+    const date = new Date()
     .toISOString()
     .replace(/T/, ' ');
-    console.log(`[${date}] ${req.ip} ${req.method} ${req.url}`);
-    next();
+    const ip = req.ip;
+    const request = req.method + ' ' + req.url;
     
+    const body = {...req.body };
+    if (body.password) {
+        body.password = '********';
+    }
+
+
+    const bodyText = JSON.stringify(body);
+
+    console.log(`[${date}] ${ip} ${request} ${bodyText}`);
+    
+    next();
 }
